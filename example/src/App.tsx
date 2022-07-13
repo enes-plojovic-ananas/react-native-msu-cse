@@ -1,18 +1,33 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-msu-cse';
+import {
+  encrypt,
+  detectBrand,
+  isValidCVV,
+  isValidExpiry,
+  isValidPan,
+  multiply,
+} from 'react-native-msu-cse';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState<string | boolean | undefined>();
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    encrypt('4556085311687546', 'Enes Plojovic', 29, 9, '190', 'nonce').then(
+      setResult
+    );
+    // detectBrand('348367846999807').then(setResult);
+    // detectBrand('4556085311687546').then(setResult);
+    // multiply(2, 5).then(setResult);
+    // isValidExpiry(2, 23).then(setResult);
+    // isValidCVV('131', '4556085311687546').then(setResult);
+    // isValidPan('4556085311687546').then(setResult);
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {result?.toString()}</Text>
     </View>
   );
 }
