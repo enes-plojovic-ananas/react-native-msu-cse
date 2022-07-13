@@ -16,12 +16,12 @@ import { encrypt } from 'react-native-msu-cse';
 // ...
 
 const result = await encrypt(
-  '4556085311687546',
-  'John Doe',
-  24,
-  9,
-  '192',
-  'someRandomString'
+  '4556085311687546', // Card Pan
+  'John Doe', // Cardholder Name
+  24, // Expiry Year
+  9, // Expirty Month
+  '192', // CVV/CVC
+  'someRandomString' // nonce (random generated string - max length: 16 characters)
 );
 ```
 
