@@ -1,5 +1,7 @@
 # react-native-msu-cse
+
 Reac Native implementation of MSU CSE
+
 ## Installation
 
 ```sh
@@ -9,11 +11,18 @@ npm install react-native-msu-cse
 ## Usage
 
 ```js
-import { multiply } from "react-native-msu-cse";
+import { encrypt } from 'react-native-msu-cse';
 
 // ...
 
-const result = await multiply(3, 7);
+const result = await encrypt(
+  '4556085311687546',
+  'John Doe',
+  24,
+  9,
+  '192',
+  'someRandomString'
+);
 ```
 
 ## Contributing
