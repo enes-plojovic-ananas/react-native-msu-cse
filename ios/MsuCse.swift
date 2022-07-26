@@ -1045,9 +1045,9 @@ internal class CSEApiImpl: CSEApi {
     let developmentMode: Bool
     var endpoint: String {
         if developmentMode {
-           return  "https://test.merchantsafeunipay.com/msu/cse/publickey"
+           return  "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey"
         } else {
-            return "https://merchantsafeunipay.com/msu/cse/publickey"
+            return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey"
         }
     }
     
