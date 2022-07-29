@@ -60,9 +60,9 @@ final class CSEApiImpl implements CSEApi {
   @SuppressWarnings("unused")
   private static String endpoint(boolean developmentMode) {
     if (developmentMode) {
-      return "https://test.merchantsafeunipay.com/msu/cse/publickey";
+      return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey";
     } else {
-      return "https://merchantsafeunipay.com/msu/cse/publickey";
+      return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey";
     }
   }
 }
