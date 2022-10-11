@@ -17,7 +17,6 @@ import java.util.Calendar;
 public class MsuCseModule extends ReactContextBaseJavaModule {
   public static final String NAME = "MsuCse";
   private AsyncTask<Void, Void, EncryptTaskResult> task;
-  private final CSEApi cseApi = new CSEApiImpl(true);
   private final Handler handler = new Handler(Looper.getMainLooper());
 
   public MsuCseModule(ReactApplicationContext reactContext) {
@@ -70,6 +69,7 @@ public class MsuCseModule extends ReactContextBaseJavaModule {
                       Integer expiryMonth,
                       String cvv,
                       String nonce,
+                      Boolean developmentMode,
                       Promise promise) {
 
     EncryptRequest request = new CardEncryptRequest(pan, expiryYear, expiryMonth, cardHolderName, cvv, nonce);
@@ -83,6 +83,8 @@ public class MsuCseModule extends ReactContextBaseJavaModule {
         promise.resolve("Error: " + encryptException.getCode().toString());
       }
     };
+
+    CSEApi cseApi = new CSEApiImpl(developmentMode);
 
     try {
       if (request.validate()) {

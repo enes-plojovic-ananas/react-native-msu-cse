@@ -62,7 +62,7 @@ final class CSEApiImpl implements CSEApi {
     if (developmentMode) {
       return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey";
     } else {
-      return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey";
+      return "https://merchantsafeunipay.com/msu/cse/publickey";
     }
   }
 }

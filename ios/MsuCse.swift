@@ -1004,8 +1004,8 @@ class MsuCse: NSObject {
         resolve(a*b)
     }
     
-    @objc(encrypt:withName:withExpiryYear:withExpiryMonth:withCVV:withNonce:withResolver:withRejecter:)
-    private func encrypt(pan: String, cardHolderName: String, expiryYear: Int, expiryMonth: Int, cvv: String, nonce: String, resolve: @escaping RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
+    @objc(encrypt:withName:withExpiryYear:withExpiryMonth:withCVV:withNonce:withDevelopmentMode:withResolver:withRejecter:)
+    private func encrypt(pan: String, cardHolderName: String, expiryYear: Int, expiryMonth: Int, cvv: String, nonce: String, developmentMode: Bool, resolve: @escaping RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) -> Void {
             let request: EncryptRequest = CardEncryptRequest(pan: pan, cardHolderName: cardHolderName, year: expiryYear, month: expiryMonth, cvv: cvv, nonce: nonce);
             _errors = []
             if !request.validate() {
@@ -1014,7 +1014,7 @@ class MsuCse: NSObject {
             } else {
                 DispatchQueue.global(qos: .background).async { [weak self] in
                     
-                    let cseApi = CSEApiImpl(developmentMode: true)
+                    let cseApi = CSEApiImpl(developmentMode: developmentMode)
                     cseApi.fetchPublicKey {
                         r in
                         switch r {
@@ -1047,7 +1047,7 @@ internal class CSEApiImpl: CSEApi {
         if developmentMode {
            return  "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey"
         } else {
-            return "https://entegrasyon.asseco-see.com.tr/msu/cse/publickey"
+            return "https://merchantsafeunipay.com/msu/cse/publickey"
         }
     }
     

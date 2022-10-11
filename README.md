@@ -8,6 +8,16 @@ Reac Native implementation of MSU CSE
 npm install react-native-msu-cse
 ```
 
+or
+
+```sh
+yarn add react-native-msu-cse
+```
+Install pods
+```sh
+cd ios && pod install
+```
+
 ## Usage
 
 ```js
@@ -21,13 +31,10 @@ const result = await encrypt(
   24, // Expiry Year
   9, // Expirty Month
   '192', // CVV/CVC
-  'someRandomString' // nonce (random generated string - max length: 16 characters)
+  'someRandomString', // nonce (random generated string - max length: 16 characters),
+  true // Development mode
 );
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 
