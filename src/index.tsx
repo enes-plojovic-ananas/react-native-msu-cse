@@ -43,7 +43,8 @@ export function encrypt(
   year: number,
   month: number,
   cvv: string,
-  nonce: string
+  nonce: string,
+  developmentMode: boolean
 ): Promise<string> {
-  return MsuCse.encrypt(pan, name, year, month, cvv, nonce);
+  return MsuCse.encrypt(pan, name, year, month, cvv, nonce, developmentMode);
 }
