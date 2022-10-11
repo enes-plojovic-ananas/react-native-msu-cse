@@ -28,6 +28,7 @@ RCT_EXTERN_METHOD(encrypt:(NSString)pan
                  withExpiryMonth:(NSInteger)expiryMonth
                  withCVV:(NSString)cvv
                  withNonce:(NSString)nonce
+                 withDevelopmentMode:(BOOL)developmentMode
                  withResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTPromiseRejectBlock)reject)
 
