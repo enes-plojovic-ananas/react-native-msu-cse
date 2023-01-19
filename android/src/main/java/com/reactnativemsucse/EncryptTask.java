@@ -42,18 +42,24 @@ final class EncryptTask extends AsyncTask<Void, Void, EncryptTaskResult> {
 
   @Override
   protected void onPostExecute(EncryptTaskResult encryptTaskResult) {
-    EncryptCallback encryptCallback = callback.get();
-
+    EncryptCallback encryptCallback;
     //noinspection ConstantConditions
     if (callback == null) {
       Log.w("EncryptTask", "onPostExecute invoked with callback = null");
       return;
     }
 
-    if (encryptTaskResult.getEncrypted() != null) {
-      encryptCallback.onSuccess(encryptTaskResult.getEncrypted());
+    encryptCallback = callback.get();
+    
+    if(encryptCallback != null) {
+      if (encryptTaskResult.getEncrypted() != null) {
+        encryptCallback.onSuccess(encryptTaskResult.getEncrypted());
+      } else {
+        encryptCallback.onError(EncryptException.create(EncryptExceptionCode.UNKNOWN_EXCEPTION));
+      }
     } else {
-      encryptCallback.onError(encryptTaskResult.getEncryptException());
+      Log.w("EncryptTask", "onPostExecute invoced with encryptCallback = null");
+      return;
     }
   }
 }
